@@ -1,0 +1,28 @@
+{
+  "name": "employeetracker",
+  "version": "1.0.0",
+  "description": "![badge](https://img.shields.io/badge/license-MIT-green) ![badge](https://img.shields.io/github/last-commit/paulooliveira152012 (github account)/EmployeeTracker) - [instalation](#instalation) - [usage](#usage) - [contribution](#contribution) - [tests](#tests)",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulooliveira152012/employeeTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulooliveira152012/employeeTracker/issues"
+  },
+  "homepage": "https://github.com/paulooliveira152012/employeeTracker#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "jest": "^28.1.2"
+  }
+}
