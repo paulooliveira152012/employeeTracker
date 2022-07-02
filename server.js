@@ -1,10 +1,5 @@
-// TODO: Include packages needed for this application
-// TODO: Include packages needed for this application
-const fs = require('fs')
-const inquirer = require('inquirer')
-
-// Array for departments
-var departmentArray = [];
+const inquirer = require('inquirer');
+const db = require('./db/connections');
 
 function start() {
         inquirer.prompt([
@@ -56,6 +51,142 @@ function start() {
     )
 }
 
+
+
+function viewAllDep(input) {
+    //prompt users with engineer based questions
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "github",
+                message: "What's their github account?",
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
+            }
+        ] 
+        
+    )
+.then(answers => {
+    if(answers.choice === "yes") {
+        const engineerAnswer = new Engineer(
+            input.name, 
+            input.id, 
+            input.email, 
+            answers.github
+        );
+        newStaffMember.push(engineerAnswer);
+        start()
+    } else {
+            const engineerAnswer = new Engineer(
+                input.name, 
+                input.id, 
+                input.email, 
+                answers.github
+            );
+            newStaffMember.push(engineerAnswer);
+            console.log("Thank you for Using out app")
+            console.log(newStaffMember)
+        createTeam()
+        }
+    }
+)
+}
+
+function addIntern(input) {
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "school",
+                message: "What's their school name?"
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
+            }
+        ]
+    )
+.then(answers => {
+    if(answers.choice === "yes") {
+        const internAnswer = new Intern(
+            input.name, 
+            input.id, 
+            input.email, 
+            answers.school
+        );
+        newStaffMember.push(internAnswer);
+        start()
+    } else {  
+        const internAnswer = new Intern(
+                input.name, 
+                input.id, 
+                input.email, 
+                answers.school
+            );
+            newStaffMember.push(internAnswer);
+            console.log("Thank you for Using out app")
+            console.log(newStaffMember)
+            createTeam()
+            }
+        }
+    )
+}
+
+function addManager(input) {
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "What's their office number?"
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
+            }
+        ]
+    )
+    .then(answers => {
+        if(answers.choice === "yes") {
+            const managerAnswer = new Manager(
+                input.name,
+                input.id, 
+                input.email, 
+                answers.officeNumber,
+                );
+                newStaffMember.push(managerAnswer);
+            start()
+        } else {
+            const managerAnswer = new Manager(
+                input.name,
+                input.id, 
+                input.email, 
+                answers.officeNumber,
+                );
+                newStaffMember.push(managerAnswer);
+                console.log("Thank you for Using out app")
+                console.log(newStaffMember)
+                createTeam()
+            }
+        }
+    )
+}
+
+function createTeam() {
+    console.log("One or more staff member(s) got added to the system")
+    fs.writeFileSync('./dist/index.html', generateMarkdown(newStaffMember))
+  }
+
+start()
 
 
 // function viewAllDep(input) {
