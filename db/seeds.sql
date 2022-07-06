@@ -15,3 +15,8 @@ VALUES
     ('Ronald', 'Firbank', 1, NULL),
     ('Virginia', 'Woolf', 2, 1),
     ('Piers', 'Gaveston', 3, 1);
+
+INSERT INTO manager (first_name, last_name,)
+SELECT  first_name, last_name
+FROM employees
+WHERE manager_id = 1;
