@@ -1,6 +1,11 @@
 const inquirer = require('inquirer');
 const db = require('./db/connections');
 
+const {viewAllEmp, addAnEmp, upAnEmp } = require("./lib/employee");
+const {viewAllDep, addADep} = require("./lib/department_methods");
+const {viewAllRol, addARol} = require("./lib/roles_methods");
+const {addTotalByDep} = require("./lib/budget")
+
 function start() {
 
     // (1)
@@ -64,11 +69,9 @@ function start() {
     )
 };
 
+start()
+
 // exporting modules 
 module.exports = { start };
-const {viewAllDep, viewAllRol, viewAllEmp, addADep, addARol, addAnEmp, upAnEmp } = require("./lib/employee");
-const {viewAllDep, addADep} = require("./lib/department_methods");
-const {viewAllRol, addARol} = require("./lib/roles_methods");
-const {addTotalByDep} = require("./lib/budget")
 
-start()
+
