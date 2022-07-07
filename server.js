@@ -262,6 +262,7 @@ const addAnEmp = () => {
                         manArr.push(item.first_name)
                     });
 
+                    console.log("manager array 265 ->", manArr)
 
                     // Prompt the user
                     inquirer
@@ -339,23 +340,23 @@ const addAnEmp = () => {
                             // Connect to db again
                             connection.query(
                                 // Insert values from user into db, uses place holders to prevent SQL Injection attack
-                                `INSERT INTO employee (first_name, last_name, role_id, manager_id, manager_confirm)
-                                    VALUES (?, ?, ?, ?, ?)`,
-                                [data.first_name, data.last_name, role_id, manager_id, manager_confirm],
+                                `INSERT INTO employees (first_name, last_name, role_id, manager_id)
+                                    VALUES (?, ?, ?, ?)`,
+                                [data.first_name, data.last_name, role_id, manager_id],
                                 function (err, results, fields) {
                                     if (err) {
                                         console.log(err.message);
                                         return;
                                     }
-                                    // Drop the manager table in order to re-update manager table
-                                    dropManager();
+                                    // // Drop the manager table in order to re-update manager table
+                                    // dropManager();
                                     // Re-Create the manager table
-                                    createManagerTable();
+                                    // createManagerTable();
                                     // Add new and current managers to table
-                                    addManagers();
+                                    // addManagers();
                                     console.log('Employee succesfully added!');
                                     // Reset to main screen
-                                    promptUser();
+                                    start();
                                 }
                             );
                         });
