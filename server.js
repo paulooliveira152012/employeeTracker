@@ -231,14 +231,17 @@ const addAnEmp = () => {
                 console.log(err.message);
                 return;
             }
+            //why 
 
             // Create empty array for storing info
             let roleArr = [];
 
             // for each item in the results array, push the name of the roles to the roles array
             results.forEach(item => {
-                roleArr.push(item.title)
+                roleArr.push(item.job_title)
             })
+            // roleArr = ["manager", "princess"]
+            console.log(roleArr)
             // Connect to db again 
             connection.query(
                 // Select all managers from managers table for future ref
@@ -251,6 +254,7 @@ const addAnEmp = () => {
 
                     // Create empty array for managers
                     let manArr = [];
+
 
                     // For each item in results array, push the name of the manager to the manager array
                     results.forEach(item => {
@@ -287,13 +291,13 @@ const addAnEmp = () => {
                                 name: 'mngt_pick',
                                 message: 'Who will your employees manager be?',
                                 // If the user confirms the emp is a manager, then do not run this prompt
-                                when: ({ mngt_confirm }) => {
-                                    if (!mngt_confirm) {
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                },
+                                // when: ({ mngt_confirm }) => {
+                                //     if (!mngt_confirm) {
+                                //         return true;
+                                //     } else {
+                                //         return false;
+                                //     }
+                                // },
                                 // Choices will be the names from the manager array
                                 choices: manArr
                             }
