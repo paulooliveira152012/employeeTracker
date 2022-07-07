@@ -20,3 +20,5 @@ INSERT INTO manager (first_name, last_name,)
 SELECT  first_name, last_name
 FROM employees
 WHERE manager_id = 1;
+VALUES
+    ('Robert', 'Smith', );

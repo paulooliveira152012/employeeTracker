@@ -32,7 +32,7 @@ function start() {
     .then (
         function(userInput){
             //first console log
-            console.log(userInput)
+            console.log("user choice 35 -->",userInput)
             //DEPARTMENT 
             if(userInput.choice === "viev all departments"){
                 viewAllDep(userInput)
@@ -64,7 +64,7 @@ function start() {
     )
 };
 
-start()
+
 
 //function to view all departments
 const viewAllDep = () => {
@@ -228,20 +228,21 @@ const addAnEmp = () => {
         `SELECT * FROM roles`,
         function (err, results, fields) {
             if (err) {
-                console.log(err.message);
+                console.log("any errors? -->", err.message);
                 return;
             }
             //why 
 
             // Create empty array for storing info
             let roleArr = [];
+            console.log("role array 238 --> ", roleArr)
 
             // for each item in the results array, push the name of the roles to the roles array
             results.forEach(item => {
                 roleArr.push(item.job_title)
             })
             // roleArr = ["manager", "princess"]
-            console.log(roleArr)
+            console.log("role array 245 ->", roleArr)
             // Connect to db again 
             connection.query(
                 // Select all managers from managers table for future ref
@@ -254,12 +255,13 @@ const addAnEmp = () => {
 
                     // Create empty array for managers
                     let manArr = [];
-
+                    console.log("manager array 258 ->", manArr)
 
                     // For each item in results array, push the name of the manager to the manager array
                     results.forEach(item => {
                         manArr.push(item.first_name)
                     });
+
 
                     // Prompt the user
                     inquirer
@@ -267,7 +269,7 @@ const addAnEmp = () => {
                             {
                                 type: 'text',
                                 name: 'first_name',
-                                message: 'What is you employees first name?'
+                                message: 'What is your employees first name?'
                             },
                             {
                                 type: 'text',
@@ -452,3 +454,5 @@ const upAnEmp = () => {
         }
     );
 };
+
+start()
