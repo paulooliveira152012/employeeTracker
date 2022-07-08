@@ -106,7 +106,7 @@ const viewAllEmp = () => {
     // creating connection to database
     connection.query(
         `SELECT employees.id, employees.first_name, employees.last_name,
-        roles.job_title AS job_title, employees.department, 
+        roles.job_title AS job_title, departments.name, 
         roles.role_salary AS salary, 
         manager.first_name AS manager
         FROM employees
@@ -114,6 +114,7 @@ const viewAllEmp = () => {
         ON employees.role_id = roles.id
         LEFT JOIN manager
         ON employees.manager_id = manager_id
+        LEFT JOIN departments ON roles.department_id = departments.id
         `,
     
         //callback
