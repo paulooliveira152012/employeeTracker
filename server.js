@@ -85,10 +85,7 @@ const viewAllDep = () => {
 //function to view all roles
 const viewAllRol = () => {
     connection.query(
-        `SELECT roles.job_title, roles.id, departments.name, roles.role_salary 
-            FROM roles
-            LEFT JOIN departments
-            ON roles.department_id = departments.id `,
+        `SELECT * FROM employees `,
         function (err, results, fields) {
             if (err) {
                 console.log(err.message);
@@ -108,15 +105,8 @@ const viewAllRol = () => {
 const viewAllEmp = () => {
     // creating connection to database
     connection.query(
-        `SELECT employees.id, employees.first_name, employees.last_name, roles.job_title AS role, roles.role_salary, manager.first_name AS manager,
-        departments.name AS department
-        FROM employees
-        LEFT JOIN roles
-        ON employees.job_title = roles.id
-        LEFT JOIN departments
-        ON roles.department_id = departments.id
-        LEFT JOIN manager
-        ON employees.manager_id = manager.id`,
+        `SELECT employees.id, employees.first_name, employees.last_name, 
+        FROM employees`,
         //callback
         function (err, results, field) {
             if(err) {
@@ -376,6 +366,7 @@ const addAnEmp = () => {
 const upAnEmp = () => {
     // Select all roles from table for future ref
     connection.query(
+        console.log('hello')
         `SELECT * FROM roles`,
         function (err, results, fields) {
             if (err) {
@@ -445,7 +436,7 @@ const upAnEmp = () => {
                                         return;
                                     }
                                     console.log('Employee updated!');
-                                    promptUser();
+                                    start();
                                 }
                             );
                         });
