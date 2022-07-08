@@ -376,6 +376,7 @@ const addAnEmp = () => {
 const upAnEmp = () => {
     // Select all roles from table for future ref
     connection.query(
+        console.log('hello')
         `SELECT * FROM roles`,
         function (err, results, fields) {
             if (err) {
@@ -445,7 +446,7 @@ const upAnEmp = () => {
                                         return;
                                     }
                                     console.log('Employee updated!');
-                                    promptUser();
+                                    start();
                                 }
                             );
                         });
