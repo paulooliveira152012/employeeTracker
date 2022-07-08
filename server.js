@@ -106,8 +106,10 @@ const viewAllEmp = () => {
     // creating connection to database
     connection.query(
         `SELECT employees.id, employees.first_name, employees.last_name,
-        role_id, employees.department
-        FROM employees`,
+        employees.role_id, employees.department, roles.job_title AS role
+        FROM employees
+        LEFT JOIN roles
+        ON employees.job_title = roles.id`,
         //callback
         function (err, results, field) {
             if(err) {
