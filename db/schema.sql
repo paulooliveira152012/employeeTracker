@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS employee_db;
+
+CREATE DATABASE employee_db;
+USE employee_db;
+
+
 DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS employees;
@@ -5,7 +11,7 @@ DROP TABLE IF EXISTS manager;
 
 CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) 
+    name VARCHAR(30)
 );
 
 CREATE TABLE roles(
@@ -29,8 +35,8 @@ CREATE TABLE employees (
     last_name VARCHAR(15) NOT NULL,
     role_id INTEGER NOT NULL,
     CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id),
-    department VARCHAR,
-    CONSTRAINT fk_dept FOREIGN KEY (name) REFERENCES departments(name),
+    department INTEGER,
+    CONSTRAINT fk_dept FOREIGN KEY (id) REFERENCES departments(id),
     manager_id INTEGER,
     CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES manager(id) ON DELETE SET NULL
 );
