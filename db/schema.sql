@@ -11,13 +11,14 @@ DROP TABLE IF EXISTS manager;
 
 CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30)
+    departmentName VARCHAR(30)
 );
 
 CREATE TABLE roles(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(30) NOT NULL,
-    department_id INTEGER,
+    role_id INTEGER NOT NULL,
+    departments_departmentName,
     CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE SET NULL,
     role_salary DECIMAL (7,2)
 );

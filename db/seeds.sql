@@ -2,13 +2,14 @@ INSERT INTO departments (name)
 VALUES
     ("Management"),
     ("IT support"),
-    ("Sales");
+    ("Engineering");
 
-INSERT INTO roles (job_title, role_salary, department_id)
+
+INSERT INTO roles (job_title, role_id, department_id, role_salary)
 VALUES
-    ("Manager", 10000, 1),
-    ("Softwer engineer", 90000, 2),
-    ("Sales Person", 70000, 3);
+    ("Manager", 1, 1, 70000),
+    ("Softwer engineer", 2, 3, 90000),
+    ("Engineer", 3, 3, 70000);
 
 INSERT INTO manager (first_name, last_name)
 VALUES 
