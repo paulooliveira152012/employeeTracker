@@ -105,7 +105,8 @@ const viewAllRol = () => {
 const viewAllEmp = () => {
     // creating connection to database
     connection.query(
-        `SELECT employees.id, employees.first_name, employees.last_name, 
+        `SELECT employees.id, employees.first_name, employees.last_name,
+        role_id, employees.department
         FROM employees`,
         //callback
         function (err, results, field) {
