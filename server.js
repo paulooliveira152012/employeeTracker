@@ -85,7 +85,7 @@ const viewAllDep = () => {
 //function to view all roles
 const viewAllRol = () => {
     connection.query(
-        `SELECT * FROM employees `,
+        `SELECT *  `,
         function (err, results, fields) {
             if (err) {
                 console.log(err.message);
