@@ -112,7 +112,6 @@ const viewAllEmp = () => {
         departments.name AS department
         FROM employees
         LEFT JOIN roles
-        ON employees.job_title = roles.id
         LEFT JOIN departments
         ON roles.department_id = departments.id
         LEFT JOIN manager
