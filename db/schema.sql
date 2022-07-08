@@ -30,7 +30,7 @@ CREATE TABLE employees (
     role_id INTEGER NOT NULL,
     CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles(id),
     department INTEGER,
-    CONSTRAINT fk_dept FOREIGN KEY (id) REFERENCES departments(id),
+    CONSTRAINT fk_dept FOREIGN KEY (name) REFERENCES departments(name),
     manager_id INTEGER,
     CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES manager(id) ON DELETE SET NULL
 );
