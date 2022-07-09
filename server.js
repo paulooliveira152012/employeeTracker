@@ -2,12 +2,6 @@ const inquirer = require('inquirer');
 const connection = require('./db/connections');
 
 function start() {
-
-    // (1)
-    // WHEN I start the application
-    // THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-    // (2a) on department_methods.js
-
         //initial prompt 
         inquirer.prompt([
 
@@ -290,15 +284,6 @@ const addAnEmp = () => {
                                 type: 'list',
                                 name: 'mngt_pick',
                                 message: 'Who will your employees manager be?',
-                                // If the user confirms the emp is a manager, then do not run this prompt
-                                // when: ({ mngt_confirm }) => {
-                                //     if (!mngt_confirm) {
-                                //         return true;
-                                //     } else {
-                                //         return false;
-                                //     }
-                                // },
-                                // Choices will be the names from the manager array
                                 choices: manArr
                             }
                         ])
