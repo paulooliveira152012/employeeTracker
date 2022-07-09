@@ -22,7 +22,6 @@ function start() {
                     "add a department", 
                     "add a role", 
                     "add an employee", 
-                    "update an employee role",
                 ]
             }
         ]
@@ -31,8 +30,6 @@ function start() {
 
     .then (
         function(userInput){
-            //first console log
-            console.log("user choice 35 -->",userInput)
             //DEPARTMENT 
             if(userInput.choice === "viev all departments"){
                 viewAllDep(userInput)
@@ -362,97 +359,6 @@ const addAnEmp = () => {
                         });
                 }
             );
-        }
-    );
-};
-
-
-//function to update an employee
-
-// (8)
-// WHEN I choose to update an employee role
-// THEN I am prompted to select an employee to update and their new role and this information is updated in the database
-
-const upAnEmp = () => {
-    // Select all roles from table for future ref
-    connection.query(
-        console.log('hello')
-        `SELECT * FROM roles`,
-        function (err, results, fields) {
-            if (err) {
-                console.log(err.message);
-                return;
-            }
-
-            // Create empty array for storing info
-            let roleArr = [];
-
-            // for each item in the results array, push the name of the roles to the roles array
-            results.forEach(item => {
-                roleArr.push(item.title)
-            })
-            connection.query(
-                `SELECT first_name, last_name FROM employee`,
-                function (err, results, fields) {
-                    if (err) {
-                        console.log(err.message);
-                    }
-
-                    let nameArr = [];
-                    results.forEach(item => {
-                        nameArr.push(item.first_name);
-                        nameArr.push(item.last_name);
-                    })
-                    let combinedNameArr = [];
-                    for (let i = 0; i < nameArr.length; i += 2) {
-                        if (!nameArr[i + 1])
-                            break
-                        combinedNameArr.push(`${nameArr[i]} ${nameArr[i + 1]}`)
-                    }
-                    inquirer
-                        .prompt([
-                            {
-                                type: 'list',
-                                name: 'name_select',
-                                message: 'Please select an employee you would like to update',
-                                choices: combinedNameArr
-                            },
-                            {
-                                type: 'list',
-                                name: 'role_select',
-                                message: 'Please select a role you would like your employee to change to:',
-                                choices: roleArr
-                            }
-                        ])
-                        .then((data) => {
-                            let role_id;
-                            for (let i = 0; i < roleArr.length; i++) {
-                                if (data.role_select === roleArr[i]) {
-                                    role_id = i + 1;
-                                }
-                            };
-                            let selectedNameArr = data.name_select.split(" ");
-                            let last_name = selectedNameArr.pop();
-                            let first_name = selectedNameArr[0];
-
-                            connection.query(
-                                `UPDATE employee 
-                                        SET role_id = ?
-                                        WHERE first_name = ? AND last_name = ?`,
-                                [role_id, first_name, last_name],
-                                function (err, results, fields) {
-                                    if (err) {
-                                        console.log(err.message);
-                                        return;
-                                    }
-                                    console.log('Employee updated!');
-                                    start();
-                                }
-                            );
-                        });
-                }
-            );
-
         }
     );
 };
