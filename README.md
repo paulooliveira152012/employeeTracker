@@ -40,14 +40,14 @@
 
 ![Heroku] ()
 
-![GitHub-repository] ()
+![GitHub-repository] (https://github.com/paulooliveira152012/employeeTracker)
 
-Front-End preview
-![JS-Front-end](assets/images/)
+Commandline preview
+![commandline](assets/images/Screen%20Shot%202022-07-09%20at%2011.51.35%20AM.png)
 
-Back-End preview
-![JS-Back-end](assets/images/)
+server.js preview
+![JS-back-end](assets/images/Screen%20Shot%202022-07-09%20at%2011.53.10%20AM.png)
 
 Video (DEMO)
-![Video]()
+![Video](https://drive.google.com/file/d/1C_jJkI-OpzbVzyJtgPsvXaqIhgnsJo95/view?usp=sharing)
 
