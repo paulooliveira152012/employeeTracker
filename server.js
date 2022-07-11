@@ -97,7 +97,7 @@ const viewAllEmp = () => {
     // creating connection to database
     connection.query(
         `SELECT employees.id, employees.first_name, employees.last_name,
-        roles.job_title AS job_title, departments.name, 
+        roles.job_title AS job_title, departments.name AS department_name, 
         roles.role_salary AS salary, 
         manager.first_name AS manager
         FROM employees
